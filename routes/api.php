@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-function registerResourceRoutes(string $group = UserRoles::USER): void
-{
-    AuthenticationController::registerRoutes($group);
-}
+// if (!function_exists('registerResourceRoutes')) {
+    function registerResourceRoutes(string $group = UserRoles::USER): void
+    {
+        AuthenticationController::registerRoutes($group);
+    }
+// }
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

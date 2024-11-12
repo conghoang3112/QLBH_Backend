@@ -25,7 +25,45 @@ Route::get('/view', function () {
     } catch (\Exception $e) {
         return 'Failed to connect to database: ' . $e->getMessage();
     }
+    // try {
+    //     $serverName = "192.168.5.95";
+    //     $databaseName = "QLBH";
+    //     $username = "sa";
+    //     $password = "123456";
+
+    //     $dsn = "sqlsrv:server=$serverName;Database=$databaseName";
+
+    //     $conn = new PDO($dsn, $username, $password);
+    //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    //     $sql = "SELECT * FROM tbl_DonViTinh";
+    //     $stmt = $conn->query($sql);
+    //     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return response()->json($data);
+    // } catch (PDOException $e) {
+    //     return 'Failed to connect to database: ' . $e->getMessage();
+    // }
 });
+
+// try {
+//     $serverName = "your_server_name";
+//     $connectionOptions = [
+//         "Database" => "your_database_name",
+//         "UID" => "your_username",
+//         "PWD" => "your_password"
+//     ];
+//     $conn = new PDO("sqlsrv:server=$serverName", $connectionOptions);
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//     $sql = "SELECT * FROM tbl_DonViTinh";
+//     $stmt = $conn->query($sql);
+//     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//     return response()->json($data);
+// } catch (PDOException $e) {
+//     return 'Failed to connect to database: ' . $e->getMessage();
+// }
 
 // Route::get('/create', function () {
 //     try {
