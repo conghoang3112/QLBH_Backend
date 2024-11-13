@@ -15,7 +15,7 @@ class UserResource extends BaseDataResource
      */
     protected array $fields = [
         'id',
-        'userName',
+        'username',
         'fullName',
         'role_id',
     ];

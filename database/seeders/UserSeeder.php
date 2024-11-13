@@ -20,9 +20,9 @@ class UserSeeder extends Seeder
         if ($adminRole) {
             User::create([
                 'role_id' => $adminRole->id,
-                'userName' => 'Admin',
+                'username' => 'Admin',
                 'fullName' => 'Admin',
-                'passwordWeb' => Hash::make(md5('password')),  
+                'password' => Hash::make(md5('password')),  
                 'passwordDesktop' => '',  
             ]);
         } else {
