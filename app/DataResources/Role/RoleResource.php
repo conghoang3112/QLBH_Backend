@@ -36,8 +36,8 @@ class RoleResource extends BaseDataResource
     {
         parent::copy($obj, $this->fields);
 
-        if (in_array('permissions', $this->fields)) {
-            $this->permissions = BaseDataResource::generateResources($obj->permissions, PermissionGroupResource::class, ['permission']);
-        }
+        // if (in_array('permissions', $this->fields)) {
+        //     $this->permissions = BaseDataResource::generateResources($obj->permissions, PermissionGroupResource::class, ['permission']);
+        // }
     }
 }

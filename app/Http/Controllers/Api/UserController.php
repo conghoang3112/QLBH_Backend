@@ -34,13 +34,13 @@ class UserController extends ApiController
     public static function registerRoutes(string $role = null): void
     {
         $root = 'users';
-        if ($role == UserRoles::ADMIN) {
+        // if ($role == UserRoles::USER) {
             Route::post($root . '/search', [UserController::class, 'search']);
             Route::get($root . '/{id}', [UserController::class, 'getSingleObject']);
             Route::post($root, [UserController::class, 'create']);
             Route::put($root . '/{id}', [UserController::class, 'update']);
             Route::delete($root . '/{id}', [UserController::class, 'delete']);
-        }
+        // }
     }
 
     public function getService(): IService

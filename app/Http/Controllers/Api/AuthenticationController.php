@@ -21,6 +21,7 @@ use App\Services\Auth\IAuthService;
 use App\Services\User\IUserService;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 class AuthenticationController extends ApiController
@@ -67,12 +68,14 @@ class AuthenticationController extends ApiController
      */
     public function handshake(Request $request): Response
     {
+        // Log::info("Authorization header: " . json_encode($request->header('Authorization')));
         # 1. load payload
         $header = $request->header('Authorization');
         $parts = explode(' ', $header);
         if (count($parts) != 2 && $parts[0] != 'HSK') throw new AuthorizationIsInvalid(ErrorCodes::ERR_INVALID_AUTHORIZATION);
         # 2. call main process
         $sub = $this->authService->handshake($parts[1], $this->currentMetaInfo());
+        // Log::info("Handshake result: " . json_encode($sub));
         if ($token = auth()->claims($sub->getJWTCustomClaims())->attempt([])) {
             # 3. return result
             return $this->createNewToken($token);

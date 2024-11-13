@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->string('userName', 100)->unique();
             $table->string('fullName');
             $table->string('passwordWeb');
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

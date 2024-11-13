@@ -9,18 +9,15 @@ use App\Models\User;
 
 class UserResource extends BaseDataResource
 {
+    protected $role_id;
     /**
      * @var array|string[]
      */
     protected array $fields = [
         'id',
-        'username',
-        'email',
-        'name',
-        'photo',
-        'address',
-        'birthday',
-        'phone',
+        'userName',
+        'fullName',
+        'role_id',
     ];
 
     /**
@@ -40,10 +37,10 @@ class UserResource extends BaseDataResource
     {
         parent::copy($obj, $this->fields);
 
-        // if (in_array('role', $this->fields)) {
-        //     $this->withField('role');
-        //     $this->role = new RoleResource($obj->role);
-        // }
+        if (in_array('role_id', $this->fields)) {
+            $this->withField('role_id');
+            $this->role_id = new RoleResource($obj->role);
+        }
 
         // if (in_array('companies', $this->fields)) {
         //     $this->companies = BaseDataResource::generateResources($obj->companies, CompanyResource::class);
